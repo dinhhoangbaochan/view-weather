@@ -1,1 +1,31 @@
-"# view-weather"  git init git add README.md git commit -m "first commit" git branch -M main git remote add origin git@github.com:dinhhoangbaochan/view-weather.git git push -u origin main
+# View Weather (Vue Weather)
+
+Yes, pun intended. Below is default description I got from running the Vue installation command.
+
+This template should help get you started developing with Vue 3 in Vite.
+
+## Recommended IDE Setup
+
+[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+
+## Customize configuration
+
+See [Vite Configuration Reference](https://vitejs.dev/config/).
+
+## Project Setup
+
+```sh
+npm install
+```
+
+### Compile and Hot-Reload for Development
+
+```sh
+npm run dev
+```
+
+### Compile and Minify for Production
+
+```sh
+npm run build
+```
