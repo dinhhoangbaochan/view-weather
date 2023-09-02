@@ -1,5 +1,5 @@
 <script setup>
-import SearchCity from './SearchCity.Vue';
+import SearchCity from './SearchCity.vue';
 </script>
 
 <template>
