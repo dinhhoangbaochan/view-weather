@@ -1,47 +1,29 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+import AppHeader from './components/AppHeader.vue'
+import AppBody from './components/AppBody.vue';
+
+const apiKey = import.meta.env.VITE_OPEN_WEATHER_API_KEY
+const cityName = 'London';
+const countryCode = '+84';
+
+// const weatherEndPoint = `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${long}&appid=${appID}`;
+const geocodingEndPoint = `http://api.openweathermap.org/geo/1.0/direct?q=Ho Chi Minh&limit=1&appid=${apiKey}`;
+
+// const getGeocoding = async () => {
+//   const req = await fetch(geocodingEndPoint, {method: 'GET'});
+//   const res = await req.json();
+
+//   return res;
+// }
+
+console.log(geocodingEndPoint);
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+  <AppHeader />
+  <AppBody />
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
-}
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
 </style>
