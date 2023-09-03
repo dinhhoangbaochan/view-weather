@@ -1,5 +1,7 @@
 <template>
-  <div class=""></div>
+  <div class="city-box">
+    <h3>{{ weatherState.cityName }}</h3>
+  </div>
 </template>
 
 <script setup>

@@ -5,7 +5,8 @@ import CityBox from './CityBox.vue';
 
 <template>
   <main>
-    <h2>The main application</h2>
+    <h2>What is the weather?</h2>
+    <p>Type in the city name that you want to search for the weather.</p>
     <div class="form">
       <SearchCity />
       <CityBox />
