@@ -46,9 +46,15 @@ const getWeather = async (cityInfo) => {
   let long = cityInfo.lon;
 
   const weatherEndPoint = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=metric&appid=${apiKey}`;
+  const weatherForecast = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${long}&units=metric&cnt=5&appid=${apiKey}`;
 
   const req = await fetch(weatherEndPoint, {method: 'GET'});
   const res = await req.json();
+
+  const reqForecast = await fetch(weatherForecast, {method: 'GET'});
+  const resForecast = await reqForecast.json();
+
+  console.log(resForecast);
 
   // const citySlug = res.name.replace(/\s/g, "").toLowerCase();
   // const imgReq = await fetch(`https://api.teleport.org/api/urban_areas/slug:${citySlug}/images/`);
@@ -69,7 +75,8 @@ const getWeather = async (cityInfo) => {
     tempMin: res.main.temp_min,
     tempMax: res.main.temp_max,
     visibility: res.visibility,
-    windSpeed: res.wind.speed
+    windSpeed: res.wind.speed,
+    forecast: resForecast.list
   }
 
   weatherStates.setWeatherInformation(weatherInfo);
