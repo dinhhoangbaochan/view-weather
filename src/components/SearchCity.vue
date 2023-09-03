@@ -40,7 +40,6 @@ const checkInput = () => {
   debounce.value = setTimeout(() => {
     getGeocoding().then((result) => {
     geocoding.value = result;
-    console.log(result)
   });
   }, 500)
 }
