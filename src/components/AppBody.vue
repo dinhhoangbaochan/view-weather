@@ -1,14 +1,15 @@
 <script setup>
 import CityBox from './CityBox.vue';
-import SearchCity from './SearchCity.Vue';
+import CitySearchInput from './CitySearchInput.vue';
+
 </script>
 
 <template>
   <main>
 
-    <div class="search-form">
-      <SearchCity />
-    </div>
+    <!-- <div class="search-form">
+      <CitySearchInput />
+    </div> -->
 
     <div class="city-row">
       <CityBox />
