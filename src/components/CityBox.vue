@@ -21,21 +21,7 @@
     <div class="right-column">
 
       <ForecastWrapper v-if="weatherState.getForecastList.length > 0" :forecast-list="weatherState.getForecastList" />
-
-      <!-- Today's Information -->
-      <div class="today-wrapper">
-        <div class="today-box">
-          <div class="today-box-inner">
-            <div class="box-title">Wind Status</div>
-            <div class=""></div>
-          </div>
-        </div>
-        <div class="today-box">Information Title</div>
-        <div class="today-box">Information Title</div>
-        <div class="today-box">Information Title</div>
-        <div class="today-box">Information Title</div>
-        <div class="today-box">Information Title</div>
-      </div>
+      <TodayInfoWrapper />
 
     </div>
   </div>
@@ -46,6 +32,7 @@ import { useWeatherStore } from '@/stores/weather';
 import CitySearchInput from './CitySearchInput.vue';
 import WeatherIcon from './WeatherIcon.vue';
 import ForecastWrapper from './ForecastWrapper.vue';
+import TodayInfoWrapper from './TodayInfoWrapper.vue';
 
 const weatherState = useWeatherStore();
 </script>

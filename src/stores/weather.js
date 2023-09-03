@@ -15,6 +15,9 @@ export const useWeatherStore = defineStore('searchedWeather', {
       tempMax: 0,
       visibility: 0,
       windSpeed: 0,
+      cloud: 0,
+      sunrise: 0,
+      sunset: 0,
       forecast: []
     }
   },
@@ -33,6 +36,9 @@ export const useWeatherStore = defineStore('searchedWeather', {
       this.tempMax = _weatherInfo.tempMax;
       this.visibility = _weatherInfo.visibility;
       this.windSpeed = _weatherInfo.windSpeed;
+      this.cloud = _weatherInfo.cloud;
+      this.sunrise = _weatherInfo.sunrise;
+      this.sunset = _weatherInfo.sunset;
       this.forecast = _weatherInfo.forecast;
     }
   },

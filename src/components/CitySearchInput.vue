@@ -68,14 +68,19 @@ const getWeather = async (cityInfo) => {
     lat: lat,
     long: long,
     country: cityInfo.country,
+
     weatherType: res.weather[0].main,
     weatherTypeDesc: res.weather[0].description,
     temp: res.main.temp,
     feelsLike: res.main.feels_like,
     tempMin: res.main.temp_min,
     tempMax: res.main.temp_max,
+
     visibility: res.visibility,
     windSpeed: res.wind.speed,
+    cloud: res.clouds.all,
+    sunrise: res.sys.sunrise,
+    sunset: res.sys.sunset,
     forecast: resForecast.list
   }
 
