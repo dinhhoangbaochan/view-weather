@@ -1,4 +1,27 @@
-@import './base.css';
+/* @import './base.css'; */
+@import url(https://fonts.googleapis.com/css?family=Work+Sans:400,900,800,500,700,600);
+
+*, *::after,*::before{
+  box-sizing:border-box;
+}
+
+:focus {
+  outline: none;
+}
+
+html, body {
+  font-size:14px;
+  background:#fbfbfb;
+  font-family: 'Work Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background-image: url(https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2076&q=80);
+}
 
 #app {
   max-width: 1280px;
@@ -8,16 +31,4 @@
   font-weight: normal;
 }
 
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-}
-
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
-}
 

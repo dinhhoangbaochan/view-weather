@@ -1,5 +1,6 @@
 <template>
-  <input type="text" @keyup="setCity($event)" @input="checkInput">
+  <input type="text" @keyup="setCity($event)" placeholder="i.e Detroit" class="search-input">
+  <input type="submit" value="search" @click="checkInput">
 </template>
 
 <script setup>
@@ -27,14 +28,15 @@ const getGeocoding = async () => {
 }
 
 const checkInput = () => {
-  clearTimeout(debounce.value);
-  debounce.value = setTimeout(() => {
-    getGeocoding().then((result) => {
+  // clearTimeout(debounce.value);
+  // debounce.value = setTimeout(() => {
+    
+  // }, 500)
+  getGeocoding().then((result) => {
       geocoding.value = result;
       // console.log(result);
       getWeather(result[0]);
     });
-  }, 500)
 }
 
 const getWeather = async (cityInfo) => {
@@ -67,3 +69,15 @@ const getWeather = async (cityInfo) => {
 }
 
 </script>
+
+<style>
+.search-input {
+  border: none;
+  border-bottom: 1px solid white;
+  background: transparent;
+  font-size: 14px;
+  width: 400px;
+  height: 40px;
+  color: #fff;
+}
+</style>
