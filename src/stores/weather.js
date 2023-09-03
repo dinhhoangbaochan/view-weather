@@ -14,7 +14,8 @@ export const useWeatherStore = defineStore('searchedWeather', {
       tempMin: 0,
       tempMax: 0,
       visibility: 0,
-      windSpeed: 0
+      windSpeed: 0,
+      forecast: []
     }
   },
 
@@ -32,12 +33,17 @@ export const useWeatherStore = defineStore('searchedWeather', {
       this.tempMax = _weatherInfo.tempMax;
       this.visibility = _weatherInfo.visibility;
       this.windSpeed = _weatherInfo.windSpeed;
+      this.forecast = _weatherInfo.forecast;
     }
   },
   
   getters: {
     getIconURL() {
       return `https://openweathermap.org/img/wn/${this.icon}@2x.png`;
+    },
+
+    getForecastList() {
+      return this.forecast;
     }
   }
 })
