@@ -2,6 +2,8 @@
 
 Yes, pun intended. Below is default description I got from running the Vue installation command.
 
+Design inspiration: [Dribble Weather App](https://dribbble.com/shots/20449736-Weather-App)
+
 This template should help get you started developing with Vue 3 in Vite.
 
 ## Recommended IDE Setup

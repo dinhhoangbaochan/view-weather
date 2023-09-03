@@ -1,6 +1,8 @@
 <template>
-  <input type="text" @keyup="setCity($event)" placeholder="i.e Detroit" class="search-input">
-  <input type="submit" value="search" @click="checkInput">
+  <div class="city-search-wrapper">
+    <input type="text" @keyup="setCity($event)" placeholder="i.e Detroit" class="search-input">
+    <input type="submit" value="search" @click="checkInput">
+  </div>
 </template>
 
 <script setup>
@@ -43,10 +45,17 @@ const getWeather = async (cityInfo) => {
   let lat = cityInfo.lat;
   let long = cityInfo.lon;
 
-  const weatherEndPoint = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${apiKey}`;
+  const weatherEndPoint = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=metric&appid=${apiKey}`;
 
   const req = await fetch(weatherEndPoint, {method: 'GET'});
   const res = await req.json();
+
+  // const citySlug = res.name.replace(/\s/g, "").toLowerCase();
+  // const imgReq = await fetch(`https://api.teleport.org/api/urban_areas/slug:${citySlug}/images/`);
+  // const imgRes = await imgReq.json();
+
+  // console.log(citySlug);
+  // console.log(imgRes);
   
   const weatherInfo = {
     cityName: cityInfo.name,
@@ -64,7 +73,7 @@ const getWeather = async (cityInfo) => {
   }
 
   weatherStates.setWeatherInformation(weatherInfo);
-
+  console.log(res)
   return res;
 }
 
@@ -73,11 +82,8 @@ const getWeather = async (cityInfo) => {
 <style>
 .search-input {
   border: none;
-  border-bottom: 1px solid white;
   background: transparent;
   font-size: 14px;
-  width: 400px;
-  height: 40px;
-  color: #fff;
+  color: #000;
 }
 </style>

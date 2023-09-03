@@ -33,5 +33,11 @@ export const useWeatherStore = defineStore('searchedWeather', {
       this.visibility = _weatherInfo.visibility;
       this.windSpeed = _weatherInfo.windSpeed;
     }
+  },
+  
+  getters: {
+    getIconURL() {
+      return `https://openweathermap.org/img/wn/${this.icon}@2x.png`;
+    }
   }
 })
