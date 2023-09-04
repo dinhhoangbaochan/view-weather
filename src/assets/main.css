@@ -1,9 +1,7 @@
 /* @import './base.css'; */
 @import url(https://fonts.googleapis.com/css?family=Work+Sans:400,900,800,500,700,600);
 
-*, *::after,*::before{
-  box-sizing:border-box;
-}
+
 
 :focus {
   outline: none;
@@ -17,26 +15,6 @@ html, body {
 	-moz-osx-font-smoothing: grayscale;
   height: 100%;
   margin: 0;
-}
-
-body {
-  background-color: #d6d7da;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-#app {
-  max-width: 1440px;
-  margin: 0 auto;
-  background-color: #f6f6f8;
-  font-weight: normal;
-  width: 100%;
-  border-radius: 20px;
-}
-
-span.unit {
-  font-size: 24px;
 }
 
 .break {

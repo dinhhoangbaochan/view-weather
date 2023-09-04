@@ -30,7 +30,6 @@
 </template>
 
 <script setup>
-import { onMounted } from 'vue'
 import { useWeatherStore } from '@/stores/weather';
 import CitySearchInput from './CitySearchInput.vue';
 import WeatherIcon from './WeatherIcon.vue';
@@ -72,7 +71,7 @@ const apiKey = import.meta.env.VITE_OPEN_WEATHER_API_KEY;
 // })
 </script>
 
-<style>
+<style lang="scss">
 .location-wrapper {
   position: relative;
 }
@@ -82,19 +81,27 @@ const apiKey = import.meta.env.VITE_OPEN_WEATHER_API_KEY;
   flex-direction: row;
 }
 
-.right-column, .left-column {
-  padding: 20px;
-  width: 100%;
-}
-
 .left-column {
   max-width: 30%;
   background: linear-gradient(to bottom, #57c1eb 0%,#246fa8 100%);
   color: #fff;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
 }
 
 .right-column {
   max-width: 70%;
+}
+
+.right-column, .left-column {
+  padding: 20px;
+  width: 100%;
+  
+  @media (max-width: 1024px) {
+    max-width: 100%;
+    border-radius: 0;
+  }
+
 }
 
 .weather-temperature p {
