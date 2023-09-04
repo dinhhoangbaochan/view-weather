@@ -39,36 +39,6 @@ import TodayInfoWrapper from './TodayInfoWrapper.vue';
 const weatherState = useWeatherStore();
 const apiKey = import.meta.env.VITE_OPEN_WEATHER_API_KEY;
 
-
-// onMounted(() => {
-//   console.log(`the component is now mounted.`);
-
-//   const success = (position) => {
-//       const latitude  = position.coords.latitude;
-//       const longitude = position.coords.longitude;
-      
-//       console.log('allowed')
-//       console.log(latitude, longitude);
-
-//       // const getGeocoding = async () => {
-//       //   const weatherEndPoint = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`;
-
-//       //   const req = await fetch(weatherEndPoint, {method: 'GET'});
-//       //   const res = await req.json();
-//       //   console.log(res)
-//       //   return res;
-//       // }
-
-//       // getGeocoding();
-//   };
-
-//   const error = () => {
-//     console.log('error');
-//   }
-
-//   // This will open permission popup
-//   navigator.geolocation.getCurrentPosition(success, error);
-// })
 </script>
 
 <style lang="scss">

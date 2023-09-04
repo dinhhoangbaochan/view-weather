@@ -24,7 +24,7 @@ const setCity = (event) => {
 }
 
 const getGeocoding = async () => {
-  const geocodingEndPoint = `http://api.openweathermap.org/geo/1.0/direct?q=${citySearch.value}&limit=1&appid=${apiKey}`;
+  const geocodingEndPoint = `https://api.openweathermap.org/geo/1.0/direct?q=${citySearch.value}&limit=1&appid=${apiKey}`;
 
   const req = await fetch(geocodingEndPoint, {method: 'GET'});
   const res = await req.json();
@@ -34,68 +34,17 @@ const getGeocoding = async () => {
 
 const checkInput = () => {
   weatherStates.setInfoStatus('searching');
-  // clearTimeout(debounce.value);
-  // debounce.value = setTimeout(() => {
-    
-  // }, 500)
   getGeocoding().then((result) => {
       geocoding.value = result;
-      // console.log(result);
-      // getWeather(result[0]);
       const cityInfo = result[0];
-      console.log(cityInfo.name, cityInfo.country, cityInfo.lat, cityInfo.lon);
       weatherStates.handleWeatherInfo(cityInfo.name, cityInfo.country, cityInfo.lat, cityInfo.lon, apiKey);
 
       weatherStates.setInfoStatus('responded');
     }).catch((err) => {
-      console.log('error');
       weatherStates.setInfoStatus('error');
       alert('We couldn\'t find that city, are you sure this city exists?');
     });
 }
-
-// const getWeather = async (cityInfo) => {
-//   let lat = cityInfo.lat;
-//   let long = cityInfo.lon;
-
-//   const weatherEndPoint = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=metric&appid=${apiKey}`;
-//   const weatherForecast = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${long}&units=metric&cnt=5&appid=${apiKey}`;
-
-//   const req = await fetch(weatherEndPoint, {method: 'GET'});
-//   const res = await req.json();
-
-//   const reqForecast = await fetch(weatherForecast, {method: 'GET'});
-//   const resForecast = await reqForecast.json();
-
-//   console.log(resForecast);
-  
-//   const weatherInfo = {
-//     cityName: cityInfo.name,
-//     lat: lat,
-//     long: long,
-//     country: cityInfo.country,
-
-//     weatherType: res.weather[0].main,
-//     weatherTypeDesc: res.weather[0].description,
-//     temp: res.main.temp,
-//     feelsLike: res.main.feels_like,
-//     tempMin: res.main.temp_min,
-//     tempMax: res.main.temp_max,
-
-//     visibility: res.visibility,
-//     windSpeed: res.wind.speed,
-//     cloud: res.clouds.all,
-//     sunrise: res.sys.sunrise,
-//     sunset: res.sys.sunset,
-//     humidity: res.main.humidity,
-//     pressure: res.main.pressure,
-//     forecast: resForecast.list
-//   }
-
-//   weatherStates.setWeatherInformation(weatherInfo);
-//   console.log(res)
-//   return res;
-// }
 
 </script>
 
