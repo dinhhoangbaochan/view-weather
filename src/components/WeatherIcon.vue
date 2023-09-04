@@ -32,8 +32,8 @@ import Atmosphere from './icons/Atmosphere.vue';
 .yellow {fill:#FFEB3B}
 
 .weather-icon {
-  height: 150px;
-  width: 150px;
+  /* height: 150px;
+  width: 150px; */
   margin: 10px;
 }
 
