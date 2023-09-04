@@ -19,7 +19,7 @@ const setCity = (event) => {
 }
 
 const getGeocoding = async () => {
-  const geocodingEndPoint = `http://api.openweathermap.org/geo/1.0/direct?q=${citySearch.value}&limit=1&appid=${apiKey}`;
+  const geocodingEndPoint = `https://api.openweathermap.org/geo/1.0/direct?q=${citySearch.value}&limit=1&appid=${apiKey}`;
 
   const req = await fetch(geocodingEndPoint, {method: 'GET'});
   const res = await req.json();
@@ -28,13 +28,8 @@ const getGeocoding = async () => {
 }
 
 const checkInput = () => {
-  // clearTimeout(debounce.value);
-  // debounce.value = setTimeout(() => {
-    
-  // }, 500)
   getGeocoding().then((result) => {
       geocoding.value = result;
-      // console.log(result);
       getWeather(result[0]);
     });
 }
