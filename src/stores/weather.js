@@ -3,6 +3,8 @@ import { defineStore } from 'pinia'
 export const useWeatherStore = defineStore('searchedWeather', {
   state: () => {
     return {
+      infoStatus: 'init', // searching, responded
+
       cityName: '',
       latitude: 0,
       longtitude: 0,
@@ -25,6 +27,10 @@ export const useWeatherStore = defineStore('searchedWeather', {
   },
 
   actions: {
+    setInfoStatus(_status) {
+      this.infoStatus = _status;
+    },
+
     setWeatherInformation (_weatherInfo) {
       this.cityName = _weatherInfo.cityName;
       this.latitude = _weatherInfo.lat;
@@ -46,6 +52,42 @@ export const useWeatherStore = defineStore('searchedWeather', {
       this.humidity = _weatherInfo.humidity;
       this.pressure = _weatherInfo.pressure;
       this.forecast = _weatherInfo.forecast;
+    },
+
+    async handleWeatherInfo(cityName, countryCode, lat, long, apiKey) {
+      const weatherEndPoint = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=metric&appid=${apiKey}`;
+      const weatherForecast = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${long}&units=metric&cnt=5&appid=${apiKey}`;
+
+      const req = await fetch(weatherEndPoint, {method: 'GET'});
+      const res = await req.json();
+    
+      const reqForecast = await fetch(weatherForecast, {method: 'GET'});
+      const resForecast = await reqForecast.json();
+
+      const weatherInfo = {
+        cityName: cityName,
+        lat: lat,
+        long: long,
+        country: countryCode,
+    
+        weatherType: res.weather[0].main,
+        weatherTypeDesc: res.weather[0].description,
+        temp: res.main.temp,
+        feelsLike: res.main.feels_like,
+        tempMin: res.main.temp_min,
+        tempMax: res.main.temp_max,
+    
+        visibility: res.visibility,
+        windSpeed: res.wind.speed,
+        cloud: res.clouds.all,
+        sunrise: res.sys.sunrise,
+        sunset: res.sys.sunset,
+        humidity: res.main.humidity,
+        pressure: res.main.pressure,
+        forecast: resForecast.list
+      }
+
+      this.setWeatherInformation(weatherInfo);
     }
   },
   
@@ -56,6 +98,6 @@ export const useWeatherStore = defineStore('searchedWeather', {
 
     getForecastList() {
       return this.forecast;
-    }
+    },
   }
 })

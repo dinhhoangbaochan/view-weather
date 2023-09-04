@@ -6,17 +6,19 @@
       <div class="weather-temperature">
         <p>{{ weatherState.temp }}°C</p>
       </div>
-      <div class="weather-add-temp">
-        <p>Feels like: {{ weatherState.tempMin }}</p>
-        <p>Min: {{ weatherState.tempMin }}</p>
-        <p>Max: {{ weatherState.tempMax }}</p>
-      </div>
+
       <div class="break"></div>
+
       <div class="weather-city">
-        <p>{{ weatherState.cityName }} <span>{{ weatherState.country }}</span></p>
+        <p>{{ weatherState.cityName }} <sup>{{ weatherState.country }}</sup></p>
       </div>
-      <div class="weather-type">{{ weatherState.weatherType }}</div>
-      <div class="weather-type">{{ weatherState.weatherTypeDesc }}</div>
+      <div class="weather-add-temp">
+        <p>🚩 Kind of Weather: {{ weatherState.weatherType }} ({{ weatherState.weatherTypeDesc }})</p>
+        <p>🌞 Feels like: {{ weatherState.tempMin }}°C</p>
+        <p>🔷 Min: {{ weatherState.tempMin }}°C</p>
+        <p>🔶 Max: {{ weatherState.tempMax }}°C</p>
+      </div>
+      <div class="weather-type"></div>
     </div>
     <div class="right-column">
 
@@ -28,6 +30,7 @@
 </template>
 
 <script setup>
+import { onMounted } from 'vue'
 import { useWeatherStore } from '@/stores/weather';
 import CitySearchInput from './CitySearchInput.vue';
 import WeatherIcon from './WeatherIcon.vue';
@@ -35,9 +38,44 @@ import ForecastWrapper from './ForecastWrapper.vue';
 import TodayInfoWrapper from './TodayInfoWrapper.vue';
 
 const weatherState = useWeatherStore();
+const apiKey = import.meta.env.VITE_OPEN_WEATHER_API_KEY;
+
+
+// onMounted(() => {
+//   console.log(`the component is now mounted.`);
+
+//   const success = (position) => {
+//       const latitude  = position.coords.latitude;
+//       const longitude = position.coords.longitude;
+      
+//       console.log('allowed')
+//       console.log(latitude, longitude);
+
+//       // const getGeocoding = async () => {
+//       //   const weatherEndPoint = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`;
+
+//       //   const req = await fetch(weatherEndPoint, {method: 'GET'});
+//       //   const res = await req.json();
+//       //   console.log(res)
+//       //   return res;
+//       // }
+
+//       // getGeocoding();
+//   };
+
+//   const error = () => {
+//     console.log('error');
+//   }
+
+//   // This will open permission popup
+//   navigator.geolocation.getCurrentPosition(success, error);
+// })
 </script>
 
 <style>
+.location-wrapper {
+  position: relative;
+}
 .city-box {
   display: flex;
   flex-wrap: wrap;
@@ -65,10 +103,18 @@ const weatherState = useWeatherStore();
     margin: 0;
 }
 
-.weather-city p span {
-    background: #ff5400;
-    font-size: 14px;
-    padding: 5px 20px;
+.weather-city p {
+    font-size: 40px;
     font-weight: bold;
+}
+
+.weather-city sup {
+    background: #ff5400;
+    font-size: 20px;
+    padding: 2px 8px;
+}
+
+.weather-add-temp p {
+    font-size: 18px;
 }
 </style>

@@ -6,7 +6,7 @@
     <Snow v-else-if="weatherType == 'Snow'" :icon-display-style="iconType"/>
     <Clouds v-else-if="weatherType == 'Clouds'" :icon-display-style="iconType" />
     <Clear v-else-if="weatherType == 'Clear'" :icon-display-style="iconType"/>
-    <Atmosphere v-else />
+    <Atmosphere v-else :icon-display-style="iconType" />
   </div>
 </template>
 
