@@ -94,7 +94,7 @@ import { metersToKilometers, unixToHumanReadable } from '../../helpers/datetime.
 const weatherState = useWeatherStore();
 </script>
 
-<style>
+<style lang="scss">
 .today-wrapper {
   margin-top: 2rem;
 }
@@ -118,6 +118,10 @@ const weatherState = useWeatherStore();
   padding: 8px;
   min-height: 210px;
   max-height: 350px;
+
+  @media (max-width: 1024px) {
+    max-width: 50%;
+  }
 }
 
 .today-box-inner {
@@ -151,9 +155,28 @@ const weatherState = useWeatherStore();
 .box-info p {
     font-size: 40px;
     margin: 0;
+
+    @media (max-width: 1024px) {
+      font-size: 22px;
+    }
 }
 
 .sunriseset {
     display: flex;
+
+    img {
+      @media (max-width: 1024px) {
+        width: 30px;
+        height: 30px;
+      }
+    }
+}
+
+span.unit {
+  font-size: 24px;
+
+  @media (max-width: 1024px) {
+    font-size: 16px;
+  }
 }
 </style>
