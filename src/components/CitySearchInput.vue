@@ -81,6 +81,8 @@ const getWeather = async (cityInfo) => {
     cloud: res.clouds.all,
     sunrise: res.sys.sunrise,
     sunset: res.sys.sunset,
+    humidity: res.main.humidity,
+    pressure: res.main.pressure,
     forecast: resForecast.list
   }
 

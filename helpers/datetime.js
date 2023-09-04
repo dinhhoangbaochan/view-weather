@@ -19,3 +19,15 @@ export function formatDateTime(dateTimeString) {
 
   return formattedDate;
 };
+
+export function metersToKilometers(meters) {
+  return meters / 1000;
+}
+
+export function unixToHumanReadable(unixTimestamp) {
+  const date = new Date(unixTimestamp * 1000);
+  const hours = date.getHours();
+  const minutes = "0" + date.getMinutes();
+  const formattedTime = hours + ':' + minutes.substr(-2) + ' ' + (hours >= 12 ? 'PM' : 'AM');
+  return formattedTime;
+}

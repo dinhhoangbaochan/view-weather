@@ -33,6 +33,12 @@ defineProps({
   flex-wrap: wrap;
 }
 
+.forecast-wrapper h3 {
+    margin: 0;
+    padding: 8px;
+    font-size: 26px;
+}
+
 .forecast-box {
   width: 20%;
   /* background: #fff; */
