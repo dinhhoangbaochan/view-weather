@@ -2,7 +2,7 @@
   <div class="city-box">
     <div class="left-column">
       <CitySearchInput />
-      <WeatherIcon />
+      <WeatherIcon :weather-type="weatherState.weatherType" icon-type="svg" />
       <div class="weather-temperature">
         <p>{{ weatherState.temp }}°C</p>
       </div>
@@ -20,29 +20,8 @@
     </div>
     <div class="right-column">
 
-      <!-- Forecase Wrapper -->
-      <div class="forecast-wrapper">
-        <div class="forecast-box">Monday</div>
-        <div class="forecast-box">Tuesday</div>
-        <div class="forecast-box">Wednesday</div>
-        <div class="forecast-box">Thursday</div>
-        <div class="forecast-box">Friday</div>
-      </div>
-
-      <!-- Today's Information -->
-      <div class="today-wrapper">
-        <div class="today-box">
-          <div class="today-box-inner">
-            <div class="box-title">Wind Status</div>
-            <div class=""></div>
-          </div>
-        </div>
-        <div class="today-box">Information Title</div>
-        <div class="today-box">Information Title</div>
-        <div class="today-box">Information Title</div>
-        <div class="today-box">Information Title</div>
-        <div class="today-box">Information Title</div>
-      </div>
+      <ForecastWrapper v-if="weatherState.getForecastList.length > 0" :forecast-list="weatherState.getForecastList" />
+      <TodayInfoWrapper />
 
     </div>
   </div>
@@ -52,6 +31,8 @@
 import { useWeatherStore } from '@/stores/weather';
 import CitySearchInput from './CitySearchInput.vue';
 import WeatherIcon from './WeatherIcon.vue';
+import ForecastWrapper from './ForecastWrapper.vue';
+import TodayInfoWrapper from './TodayInfoWrapper.vue';
 
 const weatherState = useWeatherStore();
 </script>
@@ -76,30 +57,6 @@ const weatherState = useWeatherStore();
 
 .right-column {
   max-width: 70%;
-}
-
-.forecast-wrapper, .today-wrapper {
-  display: flex;
-  width: 100%;
-  flex-wrap: wrap;
-}
-
-.forecast-box {
-  width: 18%;
-  background: #fff;
-  margin-right: 1%;
-  height: 150px;
-  border-radius: 10px;
-  text-align: center;
-}
-
-.today-box {
-    max-width: 33.33%;
-    width: 100%;
-    height: 150px;
-    background-color: #fff;
-    border-radius: 10px;
-    margin-right: 1%;
 }
 
 .weather-temperature p {
